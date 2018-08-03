@@ -148,6 +148,7 @@ int HTTPServer::sendAnswer(struct MHD_Connection *connection, ConnectionInfo &co
     if (!response)
         return MHD_NO;
 
+    MHD_add_response_header(response, "Access-Control-Allow-Origin", "*");
     ret = MHD_queue_response(connection, conInfo.answerCode, response);
     MHD_destroy_response(response);
 
